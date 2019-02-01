@@ -118,7 +118,9 @@ void Editeur::ouvrir()
 
 void Editeur::ecrireHTML()
 {
-    champTexte->setPlainText("ecireHTML");
+    QString gabaritHTML = QString("<!doctype html><html lang=\"fr\"><head><meta charset=\"utf-8\"><title></title></head><body>\n\n</body></html>");
+    // TODO indenter & sauter des lignes
+    champTexte->setPlainText(gabaritHTML);
 }
 
 //! [9]
