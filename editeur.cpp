@@ -182,14 +182,6 @@ void Editeur::creerActions()
     fileMenu->addAction(newAct);
     fileToolBar->addAction(newAct);
 
-    // https://gist.github.com/peteristhegreat/c0ca6e1a57e5d4b9cd0bb1d7b3be1d6a
-    const QIcon iconeHTML(":/images/html.png");
-    QAction * actionHTML = new QAction(iconeHTML, tr("&HTML"), this);
-    actionHTML->setStatusTip("Write HTML template");
-    connect(actionHTML, &QAction::triggered, this, &Editeur::ecrireHTML);
-    fileMenu->addAction(actionHTML);
-    fileToolBar->addAction(actionHTML);
-
 //! [19]
     const QIcon openIcon = QIcon::fromTheme("document-open", QIcon(":/images/open.png"));
     QAction *openAct = new QAction(openIcon, tr("&Open..."), this);
@@ -227,6 +219,8 @@ void Editeur::creerActions()
     QMenu *editMenu = menuBar()->addMenu(tr("&Edit"));
     QToolBar *editToolBar = addToolBar(tr("Edit"));
 //!
+
+
 #ifndef QT_NO_CLIPBOARD
     const QIcon cutIcon = QIcon::fromTheme("edit-cut", QIcon(":/images/cut.png"));
     QAction *cutAct = new QAction(cutIcon, tr("Cu&t"), this);
@@ -257,6 +251,18 @@ void Editeur::creerActions()
     editToolBar->addAction(pasteAct);
 
     menuBar()->addSeparator();
+    editToolBar->addSeparator();
+
+    editMenu->addSeparator();
+
+    // https://gist.github.com/peteristhegreat/c0ca6e1a57e5d4b9cd0bb1d7b3be1d6a
+    const QIcon iconeHTML(":/images/html.png");
+    QAction * actionHTML = new QAction(iconeHTML, tr("&HTML"), this);
+    actionHTML->setStatusTip("Write HTML template");
+    connect(actionHTML, &QAction::triggered, this, &Editeur::ecrireHTML);
+    editMenu->addAction(actionHTML);
+    editToolBar->addAction(actionHTML);
+
 
 #endif // !QT_NO_CLIPBOARD
 
@@ -278,6 +284,8 @@ void Editeur::creerActions()
     connect(champTexte, &QPlainTextEdit::copyAvailable, cutAct, &QAction::setEnabled);
     connect(champTexte, &QPlainTextEdit::copyAvailable, copyAct, &QAction::setEnabled);
 #endif // !QT_NO_CLIPBOARD
+
+
 }
 //! [24]
 
