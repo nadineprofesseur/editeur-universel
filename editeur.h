@@ -78,6 +78,7 @@ private slots:
     void ouvrir();
     bool sauvegarder();
     bool sauvegarderSous();
+    void ecrireHTML();
     void about();
     void documentWasModified();
 #ifndef QT_NO_SESSIONMANAGER

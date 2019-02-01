@@ -116,6 +116,11 @@ void Editeur::ouvrir()
 }
 //! [8]
 
+void Editeur::ecrireHTML()
+{
+    champTexte->setPlainText("ecireHTML");
+}
+
 //! [9]
 bool Editeur::sauvegarder()
 //! [9] //! [10]
@@ -167,6 +172,7 @@ void Editeur::creerActions()
 
     QMenu *fileMenu = menuBar()->addMenu(tr("&File"));
     QToolBar *fileToolBar = addToolBar(tr("File"));
+
     const QIcon newIcon = QIcon::fromTheme("document-new", QIcon(":/images/new.png"));
     QAction *newAct = new QAction(newIcon, tr("&New"), this);
     newAct->setShortcuts(QKeySequence::New);
@@ -174,6 +180,15 @@ void Editeur::creerActions()
     connect(newAct, &QAction::triggered, this, &Editeur::creer);
     fileMenu->addAction(newAct);
     fileToolBar->addAction(newAct);
+
+    //const QIcon iconeHTML = QIcon(":/images/action-html.png");
+    // https://gist.github.com/peteristhegreat/c0ca6e1a57e5d4b9cd0bb1d7b3be1d6a
+    const QIcon iconeHTML = QIcon::fromTheme("text-html", QIcon(":/images/html.png"));
+    QAction * actionHTML = new QAction(iconeHTML, tr("&HTML"), this);
+    actionHTML->setStatusTip("Write HTML template");
+    connect(actionHTML, &QAction::triggered, this, &Editeur::ecrireHTML);
+    fileMenu->addAction(actionHTML);
+    fileToolBar->addAction(actionHTML);
 
 //! [19]
     const QIcon openIcon = QIcon::fromTheme("document-open", QIcon(":/images/open.png"));
