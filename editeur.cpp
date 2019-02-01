@@ -183,9 +183,8 @@ void Editeur::creerActions()
     fileMenu->addAction(newAct);
     fileToolBar->addAction(newAct);
 
-    //const QIcon iconeHTML = QIcon(":/images/action-html.png");
     // https://gist.github.com/peteristhegreat/c0ca6e1a57e5d4b9cd0bb1d7b3be1d6a
-    const QIcon iconeHTML = QIcon::fromTheme("text-html", QIcon(":/images/html.png"));
+    const QIcon iconeHTML(":/images/html.png");
     QAction * actionHTML = new QAction(iconeHTML, tr("&HTML"), this);
     actionHTML->setStatusTip("Write HTML template");
     connect(actionHTML, &QAction::triggered, this, &Editeur::ecrireHTML);
